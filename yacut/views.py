@@ -1,7 +1,7 @@
 from random import choice
 import string
 
-from flask import abort, flash, redirect, render_template, request
+from flask import flash, redirect, render_template, request
 
 from . import app, db
 from .forms import URLMapForm
@@ -10,8 +10,8 @@ from settings import pattern, SYMBOLS_QUANTITY
 
 
 @app.route('/', methods=['GET', 'POST'])
-# Функция для главной страницы с формой для пользователя
 def my_index_view():
+    """Функция для главной страницы с формой для пользователя"""
     form = URLMapForm()
     if form.validate_on_submit():
         short_url = form.custom_id.data
@@ -36,15 +36,16 @@ def my_index_view():
 
 
 @app.route('/<string:short>')
-# Метод переадресации на исходный адрес при обращении к короткой ссылке
 def redirect_to_original(short):
-    link = URLMap.query.filter_by(short=short).first()
+    """Метод переадресации на исходный адрес
+    при обращении к короткой ссылке"""
+    link = URLMap.query.filter_by(short=short).first_or_404()
     if link:
         return redirect(link.original)
-    else:
-        abort(404)
 
 
 def get_unique_short_id():
-    # Метод формирования коротких идентификаторов случайным образом
-    return ''.join(choice(string.ascii_letters + string.digits) for _ in range(SYMBOLS_QUANTITY))
+    """Метод формирования коротких идентификаторов случайным образом"""
+    return ''.join(choice(
+        string.ascii_letters + string.digits
+    ) for _ in range(SYMBOLS_QUANTITY))
