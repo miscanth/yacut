@@ -1,8 +1,8 @@
-# Проект YaCut
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)  ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 
-## Об авторе
 
-Меня зовут Юлия, и учусь в ЯндексПрактикуме в 21 когорте курса «Python-разработчик плюс».
+# Сервис укорачивания ссылок + API
+
 
 ### Описание проекта и используемые технологии
 
@@ -88,3 +88,7 @@ flask run
     "url": "https://docs.sqlalchemy.org/en/14/core/type_basics.html#generic-types"
 }
 ```
+
+
+## Разработчик (исполнитель):
+👩🏼‍💻 Юлия: https://github.com/miscanth
